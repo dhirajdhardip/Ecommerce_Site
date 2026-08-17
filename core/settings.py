@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv(
     "django-insecure-prod-key-techvault-ecom-change-me!"
 )
 
-DEBUG = os.getenv("DEBUG", "True").lower() in ("true", "1", "t")
+DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1", "t")
 
 ALLOWED_HOSTS = [
     host.strip()
