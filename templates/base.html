@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TechOrbit | Leading Tech Retail & PC Components Store{% endblock %}</title>
+    <!-- Django CSRF Token Meta Header -->
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            900: '#064e3b',
+                        },
+                        accent: {
+                            violet: '#8b5cf6',
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #020303;
+            border-radius: 4px;
+        }
+
+        /* Star Tech Style White Background Product Box */
+        .product-img-box {
+            position: relative;
+            overflow: hidden;
+            background: #fffafa !important;
+        }
+
+        .product-img-box img {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .group:hover .product-img-box img {
+            transform: scale(1.08);
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body
+    class="bg-[#f2f4f8] text-slate-900 min-h-screen flex flex-col antialiased relative selection:bg-[#ef4a23] selection:text-white">
+
+    <!-- Top Hotline Bar -->
+    <div class="bg-[#081621] border-b border-slate-800 text-xs py-2 px-4 text-slate-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center space-x-4 text-slate-400">
+                <span class="flex items-center text-[#ef4a23] font-bold">
+                    <svg class="w-4 h-4 mr-1 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                        </path>
+                    </svg>
+                    HOTLINE: +880 9678-002002
+                </span>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <span class="hidden sm:inline text-slate-400">Mon - Sat: 9:00 AM - 8:00 PM</span>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <a href="{% url 'store:pc_builder' %}"
+                    class="flex items-center text-white font-bold hover:text-[#ef4a23] transition-colors">
+                    <svg class="w-4 h-4 mr-1 text-[#ef4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                        </path>
+                    </svg>
+                    PC BUILDER
+                </a>
+                <a href="{% url 'compare:compare_detail' %}"
+                    class="text-slate-300 hover:text-[#ef4a23] transition-colors flex items-center">
+                    Compare
+                </a>
+                <a href="{% url 'wishlist:wishlist_detail' %}"
+                    class="text-slate-300 hover:text-[#ef4a23] transition-colors">Wishlist</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'users:profile' %}" class="text-[#ef4a23] font-bold hover:underline">Account ({{
+                    user.username }})</a>
+                <a href="{% url 'users:logout' %}" class="text-slate-400 hover:text-rose-400">Logout</a>
+                {% else %}
+                <a href="{% url 'users:login' %}" class="text-slate-300 hover:text-[#ef4a23] font-bold">Account /
+                    Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-[#081621] border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Brand Logo (TechOrbit) -->
+                <a href="{% url 'store:home' %}" class="flex items-center space-x-3 group">
+                    <div
+                        class="w-11 h-11 rounded-2xl bg-[#ef4a23] flex items-center justify-center font-black text-2xl text-white shadow-lg shadow-orange-600/30 group-hover:scale-105 transition-transform">
+                        TO
+                    </div>
+                    <div>
+                        <span
+                            class="text-2xl font-black tracking-tight text-white group-hover:text-[#ef4a23] transition-colors">
+                            Tech<span class="text-[#ef4a23]">Orbit</span>
+                        </span>
+                        <span class="block text-[10px] tracking-widest text-slate-400 uppercase font-semibold">Hardware
+                            Retail Store</span>
+                    </div>
+                </a>
+
+                <!-- Search Bar with Live Autocomplete -->
+                <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
+                    <form action="{% url 'store:catalog' %}" method="GET" class="relative w-full">
+                        <input type="text" name="search" placeholder="Search Processors, GPUs, Laptops, Keyboards..."
+                            autocomplete="off"
+                            class="w-full bg-white border border-slate-300 rounded-xl py-2.5 pl-4 pr-12 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ef4a23] transition-all">
+                        <button type="submit"
+                            class="absolute right-3 top-2.5 text-slate-500 hover:text-[#ef4a23] transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Navigation Action Buttons -->
+                <div class="flex items-center space-x-3">
+                    <a href="{% url 'store:pc_builder' %}"
+                        class="hidden lg:flex items-center bg-[#ef4a23] hover:bg-[#d93b15] text-white font-black text-xs px-4 py-2.5 rounded-xl shadow-md active:scale-95 transition-all">
+                        <svg class="w-4 h-4 mr-1.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                            </path>
+                        </svg>
+                        PC BUILDER
+                    </a>
+
+                    <a href="{% url 'cart:cart_detail' %}"
+                        class="relative p-2.5 bg-white/10 hover:bg-white/20 rounded-xl border border-slate-700 text-white transition-all flex items-center space-x-2">
+                        <svg class="w-6 h-6 text-[#ef4a23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z">
+                            </path>
+                        </svg>
+                        <span class="hidden sm:inline font-bold text-sm">Cart</span>
+                        <span
+                            class="cart-count-badge bg-[#ef4a23] text-white text-xs font-black px-2 py-0.5 rounded-full transition-transform">
+                            {{ cart_total_items|default:0 }}
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mega Menu Category Bar -->
+        <nav class="bg-white border-t border-b border-slate-200 hidden md:block shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <ul
+                    class="flex items-center space-x-8 text-xs font-bold uppercase tracking-wider py-3 overflow-x-auto custom-scrollbar">
+                    <li>
+                        <a href="{% url 'store:catalog' %}"
+                            class="text-[#ef4a23] hover:text-[#d93b15] transition-colors flex items-center">
+                            All Categories
+                        </a>
+                    </li>
+                    {% for cat in nav_categories %}
+                    <li class="relative group py-1">
+                        <a href="{% url 'store:catalog' %}?categories={{ cat.slug }}"
+                            class="text-slate-800 hover:text-[#ef4a23] transition-colors whitespace-nowrap">
+                            {{ cat.name }}
+                        </a>
+                        {% if cat.children.all %}
+                        <div
+                            class="absolute left-0 top-full hidden group-hover:block bg-white border border-slate-200 rounded-xl p-4 shadow-xl min-w-[220px] z-50">
+                            <ul class="space-y-2 text-xs normal-case font-medium">
+                                {% for sub in cat.children.all %}
+                                <li>
+                                    <a href="{% url 'store:catalog' %}?categories={{ sub.slug }}"
+                                        class="text-slate-800 hover:text-[#ef4a23] block px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition-colors">
+                                        {{ sub.name }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Floating Quick Compare & Cart Buttons -->
+    <div class="fixed right-4 bottom-6 z-40 flex flex-col space-y-3">
+        <a href="{% url 'compare:compare_detail' %}"
+            class="bg-[#081621] hover:bg-slate-800 text-white border border-slate-700 p-3 rounded-2xl shadow-2xl flex items-center space-x-2 backdrop-blur-md group transition-all">
+            <span
+                class="text-[10px] font-extrabold uppercase tracking-wider text-slate-300 group-hover:text-[#ef4a23]">Compare</span>
+            <span id="compare-count-badge" class="bg-[#ef4a23] text-white font-black text-xs px-2 py-0.5 rounded-full">
+                {{ request.session.compare_ids|length|default:0 }}
+            </span>
+        </a>
+
+        <a href="{% url 'cart:cart_detail' %}"
+            class="bg-[#081621] hover:bg-slate-800 text-white border border-slate-700 p-3 rounded-2xl shadow-2xl flex items-center space-x-2 backdrop-blur-md group transition-all">
+            <span
+                class="text-[10px] font-extrabold uppercase tracking-wider text-slate-300 group-hover:text-[#ef4a23]">Cart</span>
+            <span class="cart-count-badge bg-[#ef4a23] text-white font-black text-xs px-2 py-0.5 rounded-full">
+                {{ cart_total_items|default:0 }}
+            </span>
+        </a>
+    </div>
+
+    <!-- Django Messages Toast Notifications -->
+    {% if messages %}
+    <div class="max-w-7xl mx-auto px-4 mt-4">
+        {% for message in messages %}
+        <div
+            class="p-4 rounded-2xl text-xs font-bold text-white mb-2 shadow-lg ${
+            {% if message.tags == 'error' %}bg-rose-600{% elif message.tags == 'success' %}bg-emerald-600{% else %}bg-indigo-600{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content Target -->
+    <div class="flex-1">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- TechOrbit Footer -->
+    <footer class="bg-[#081621] border-t border-slate-800 mt-20 pt-16 pb-12 text-slate-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-9 h-9 rounded-xl bg-[#ef4a23] text-white font-black flex items-center justify-center text-lg">
+                            TO</div>
+                        <span class="text-xl font-bold text-white">TechOrbit</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        TechOrbit is Bangladesh's premier technology hardware retailer, offering genuine processors,
+                        graphics cards, gaming laptops, and custom PC building.
+                    </p>
+                    <div class="text-xs text-[#ef4a23] font-semibold space-y-1">
+                        <p>📍 Tech store: chowatta manru shoping Center, Level 4, sylhet</p>
+                        <p>📞 Support Hotline: +880 9678-002002</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Top Categories</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="{% url 'store:catalog' %}?categories=processors"
+                                class="hover:text-[#ef4a23]">Processors & CPUs</a></li>
+                        <li><a href="{% url 'store:catalog' %}?categories=graphics-cards"
+                                class="hover:text-[#ef4a23]">Graphics Cards (GPU)</a></li>
+                        <li><a href="{% url 'store:catalog' %}?categories=laptops" class="hover:text-[#ef4a23]">Gaming
+                                Laptops</a></li>
+                        <li><a href="{% url 'store:catalog' %}?categories=components" class="hover:text-[#ef4a23]">PC
+                                Components</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Customer Care</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="{% url 'store:pc_builder' %}" class="hover:text-[#ef4a23]">Custom PC Builder</a>
+                        </li>
+                        <li><a href="{% url 'compare:compare_detail' %}" class="hover:text-[#ef4a23]">Product
+                                Comparison</a></li>
+                        <li><a href="{% url 'wishlist:wishlist_detail' %}" class="hover:text-[#ef4a23]">Wishlist</a>
+                        </li>
+                        <li><a href="#" class="hover:text-[#ef4a23]">Warranty Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Newsletter</h4>
+                    <p class="text-xs text-slate-400 mb-3">Subscribe to get secret deals and new component arrival
+                        alerts.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email address"
+                            class="bg-[#0e1f2e] border border-slate-700 rounded-l-xl px-3.5 py-2.5 text-xs w-full text-slate-200 focus:outline-none border-r-0">
+                        <button
+                            class="bg-[#ef4a23] text-white font-bold text-xs px-4 py-2.5 rounded-r-xl hover:bg-[#d93b15] transition-all">Join</button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 TechOrbit Ltd. Inspired by Star Tech Bangladesh. All rights reserved.</p>
+                <div class="flex space-x-4 text-slate-400">
+                    <span>💳 Visa / Mastercard</span>
+                    <span>📱 bKash / Nagad</span>
+                    <span>🚚 Cash on Delivery</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JavaScript Helpers -->
+    <script src="/static/js/cart.js"></script>
+    <script src="/static/js/search.js"></script>
+    <script src="/static/js/wishlist.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

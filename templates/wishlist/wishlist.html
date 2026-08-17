@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}My Saved Wishlist | TechVault{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-white tracking-tight mb-8">My Saved Wishlist</h1>
+
+    {% if wishlist_items %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for item in wishlist_items %}
+        {% with item.product as product %}
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between shadow-lg">
+            <div>
+                <a href="{% url 'store:product_detail' product.slug %}" class="block h-40 bg-slate-950 rounded-xl p-3 mb-4 flex items-center justify-center">
+                    {% with product.images.first as img %}
+                    <img src="{% if img %}{{ img.image.url }}{% else %}/static/images/placeholder.png{% endif %}" alt="{{ product.title }}" class="max-h-full object-contain">
+                    {% endwith %}
+                </a>
+                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">{{ product.brand.name }}</span>
+                <h3 class="text-sm font-bold text-white line-clamp-2 mb-2">
+                    <a href="{% url 'store:product_detail' product.slug %}">{{ product.title }}</a>
+                </h3>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-base font-extrabold text-white">${{ product.effective_price }}</span>
+                <button onclick="moveWishlistToCart('{{ item.id }}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">
+                    Move to Cart
+                </button>
+            </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center max-w-md mx-auto">
+        <div class="text-5xl mb-4">❤️</div>
+        <h3 class="text-xl font-bold text-white mb-2">Your Wishlist is Empty</h3>
+        <p class="text-xs text-slate-400 mb-6">Save products you love to view or buy later.</p>
+        <a href="{% url 'store:catalog' %}" class="bg-cyan-500 text-slate-950 font-bold text-xs uppercase px-6 py-3 rounded-xl hover:bg-cyan-400 inline-block">
+            Browse Catalog
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    async function moveWishlistToCart(itemId) {
+        const response = await fetch(`/wishlist/api/move-to-cart/${itemId}/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCsrfToken() }
+        });
+        const data = await response.json();
+        if (data.status === 'success') {
+            showToast(data.message, 'success');
+            setTimeout(() => location.reload(), 800);
+        }
+    }
+</script>
+{% endblock %}

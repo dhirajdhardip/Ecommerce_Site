@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile & Orders | TechVault{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 mb-8 shadow-xl">
+        <div class="flex items-center space-x-4">
+            <div class="w-16 h-16 rounded-2xl bg-cyan-500 text-slate-950 font-black text-2xl flex items-center justify-center">
+                {{ user.username|slice:":1"|upper }}
+            </div>
+            <div>
+                <h1 class="text-2xl font-black text-white">{{ user.first_name }} {{ user.last_name|default:user.username }}</h1>
+                <p class="text-xs text-slate-400">{{ user.email }} • Member since {{ user.date_joined|date:"M Y" }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Section -->
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 mb-8 shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-4">My Order History</h2>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+                <thead>
+                    <tr class="border-b border-slate-800 text-slate-400">
+                        <th class="py-3 px-4">Order #</th>
+                        <th class="py-3 px-4">Date</th>
+                        <th class="py-3 px-4">Payment</th>
+                        <th class="py-3 px-4">Status</th>
+                        <th class="py-3 px-4">Total</th>
+                        <th class="py-3 px-4">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/60">
+                    {% for order in orders %}
+                    <tr>
+                        <td class="py-3.5 px-4 font-mono text-cyan-400 font-bold">#{{ order.order_number }}</td>
+                        <td class="py-3.5 px-4 text-slate-300">{{ order.created_at|date:"M d, Y" }}</td>
+                        <td class="py-3.5 px-4 uppercase text-slate-400">{{ order.payment_method }}</td>
+                        <td class="py-3.5 px-4">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
+                                {% if order.status == 'delivered' %}bg-emerald-950 text-emerald-400 border border-emerald-800
+                                {% elif order.status == 'cancelled' %}bg-rose-950 text-rose-400 border border-rose-800
+                                {% else %}bg-amber-950 text-amber-400 border border-amber-800{% endif %}">
+                                {{ order.get_status_display }}
+                            </span>
+                        </td>
+                        <td class="py-3.5 px-4 font-extrabold text-white">${{ order.grand_total }}</td>
+                        <td class="py-3.5 px-4">
+                            <a href="{% url 'orders:detail' order.order_number %}" class="text-cyan-400 hover:underline font-bold">Track →</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="py-6 text-center text-slate-500">No orders placed yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

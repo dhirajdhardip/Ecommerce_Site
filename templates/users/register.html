@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Account | TechVault{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto my-16 px-4">
+    <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl">
+        <h2 class="text-2xl font-extrabold text-slate-900 text-center mb-2">Create an Account</h2>
+        <p class="text-xs text-slate-500 text-center mb-6">Join TechVault for fast checkout, order tracking & exclusive tech deals.</p>
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            {% for field in form %}
+            <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <p class="text-[10px] text-rose-500 mt-1">{{ field.errors.0 }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs uppercase py-3.5 rounded-xl shadow-md active:scale-95 transition-all">
+                Complete Registration
+            </button>
+        </form>
+
+        <p class="text-xs text-slate-400 text-center mt-6">
+            Already registered? <a href="{% url 'users:login' %}" class="text-cyan-400 font-bold hover:underline">Sign In</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

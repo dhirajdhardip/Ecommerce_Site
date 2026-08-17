@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Details #{{ order.order_number }} | TechVault{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 mb-8 shadow-xl">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+            <div>
+                <span class="text-xs font-bold text-slate-400 uppercase">Order Details</span>
+                <h1 class="text-2xl font-black text-white font-mono text-cyan-400">#{{ order.order_number }}</h1>
+                <span class="text-xs text-slate-500">Placed on {{ order.created_at|date:"F d, Y - h:i A" }}</span>
+            </div>
+            <div>
+                <span class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider ${
+                    {% if order.status == 'delivered' %}bg-emerald-950 text-emerald-400 border border-emerald-800
+                    {% elif order.status == 'cancelled' %}bg-rose-950 text-rose-400 border border-rose-800
+                    {% else %}bg-amber-950 text-amber-400 border border-amber-800{% endif %}">
+                    Status: {{ order.get_status_display }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Order Items -->
+        <h3 class="text-xs font-bold uppercase text-slate-400 mb-4">Purchased Items</h3>
+        <div class="space-y-3 mb-8">
+            {% for item in order.items.all %}
+            <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-1">{{ item.title }}</h4>
+                    <span class="text-xs text-slate-400">${{ item.unit_price }} × {{ item.quantity }}</span>
+                </div>
+                <span class="text-sm font-black text-white">${{ item.total_price }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Totals Breakdown -->
+        <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl space-y-2 text-xs text-slate-400">
+            <div class="flex justify-between"><span>Subtotal</span><span class="text-white font-bold">${{ order.subtotal }}</span></div>
+            <div class="flex justify-between"><span>Shipping Fee</span><span class="text-white font-bold">${{ order.shipping_cost }}</span></div>
+            <div class="flex justify-between text-emerald-400"><span>Coupon Discount</span><span class="font-bold">-${{ order.discount_amount }}</span></div>
+            <div class="pt-3 border-t border-slate-800 flex justify-between text-base font-black text-white">
+                <span>Grand Total</span>
+                <span class="text-cyan-400">${{ order.grand_total }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

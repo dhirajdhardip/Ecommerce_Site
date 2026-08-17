@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In | TechVault Account{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto my-16 px-4">
+    <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl">
+        <h2 class="text-2xl font-extrabold text-slate-900 text-center mb-2">Welcome Back</h2>
+        <p class="text-xs text-slate-500 text-center mb-6">Sign in to your TechVault account to manage orders & wishlist.</p>
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1">Username</label>
+                <input type="text" name="username" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-700 block mb-1">Password</label>
+                <input type="password" name="password" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-500">
+            </div>
+
+            <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs uppercase py-3.5 rounded-xl shadow-md active:scale-95 transition-all">
+                Sign In
+            </button>
+        </form>
+
+        <p class="text-xs text-slate-400 text-center mt-6">
+            Don't have an account? <a href="{% url 'users:register' %}" class="text-cyan-400 font-bold hover:underline">Register Now</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

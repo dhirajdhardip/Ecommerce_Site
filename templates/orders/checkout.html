@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout | TechVault{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-8">Checkout & Place Order</h1>
+
+    <form method="POST" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {% csrf_token %}
+
+        <!-- Left 2 Columns: Billing & Shipping Address Form -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm space-y-4">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-3">1. Shipping Information</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-300 block mb-1">Full Name *</label>
+                        <input type="text" name="full_name" required value="{% if default_address %}{{ default_address.full_name }}{% elif user.is_authenticated %}{{ user.first_name }} {{ user.last_name }}{% endif %}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-300 block mb-1">Phone Number *</label>
+                        <input type="text" name="phone" required placeholder="01700000000" value="{{ default_address.phone|default:'' }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-300 block mb-1">Division *</label>
+                        <select name="division" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                            <option value="dhaka" selected>Dhaka</option>
+                            <option value="chattogram">Chattogram</option>
+                            <option value="rajshahi">Rajshahi</option>
+                            <option value="khulna">Khulna</option>
+                            <option value="sylhet">Sylhet</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-300 block mb-1">District *</label>
+                        <input type="text" name="district" required value="{{ default_address.district|default:'Dhaka' }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-300 block mb-1">Area / Thana *</label>
+                        <input type="text" name="area" required value="{{ default_address.area|default:'Dhanmondi' }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-xs font-bold text-slate-300 block mb-1">Full Delivery Address *</label>
+                    <textarea name="full_address" rows="3" required placeholder="House, Road, Apartment Details" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">{{ default_address.full_address|default:'' }}</textarea>
+                </div>
+            </div>
+
+            <!-- Payment Method Choice -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-3">2. Payment Option</h2>
+                
+                <div class="space-y-3">
+                    <label class="flex items-center p-4 bg-slate-950 border border-cyan-500/50 rounded-2xl cursor-pointer">
+                        <input type="radio" name="payment_method" value="cod" checked class="w-4 h-4 text-cyan-500">
+                        <div class="ml-3">
+                            <span class="text-xs font-bold text-white block">Cash on Delivery (COD)</span>
+                            <span class="text-[10px] text-slate-400">Pay cash upon inspecting products at your doorstep.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-center p-4 bg-slate-950 border border-slate-800 rounded-2xl cursor-pointer opacity-60">
+                        <input type="radio" name="payment_method" value="online" class="w-4 h-4 text-cyan-500">
+                        <div class="ml-3">
+                            <span class="text-xs font-bold text-white block">Online Payment / Cards / Mobile Banking (bKash/Nagad)</span>
+                            <span class="text-[10px] text-slate-400">SSLCommerz Sandbox Payment Architecture.</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Order Items Summary & Submit -->
+        <div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm sticky top-28 space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-3">Order Items</h3>
+                
+                <div class="space-y-3 max-h-60 overflow-y-auto custom-scrollbar pr-1">
+                    {% for item_key, item in cart.cart.items %}
+                    <div class="flex justify-between items-center text-xs">
+                        <div>
+                            <h4 class="font-bold text-white line-clamp-1 max-w-[180px]">{{ item.product_title }}</h4>
+                            <span class="text-[10px] text-slate-400">Qty: {{ item.quantity }} x ${{ item.unit_price }}</span>
+                        </div>
+                        <span class="font-bold text-white">${{ item.total_price }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+                    <div class="flex justify-between"><span>Subtotal</span><span class="text-white font-bold">${{ cart.get_subtotal }}</span></div>
+                    <div class="flex justify-between"><span>Shipping</span><span class="text-white font-bold">${{ cart.get_shipping_cost }}</span></div>
+                    <div class="flex justify-between text-emerald-400"><span>Discount</span><span class="font-bold">-${{ cart.get_discount }}</span></div>
+                    <div class="pt-2 border-t border-slate-800 flex justify-between text-base font-extrabold text-white">
+                        <span>Total Payable</span>
+                        <span class="text-cyan-400">${{ cart.get_grand_total }}</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-white text-slate-950 hover:bg-slate-200 font-black text-xs uppercase py-4 rounded-xl shadow-xl active:scale-95 transition-all">
+                    Confirm & Place Order
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
