@@ -1,0 +1,1044 @@
+[
+{
+  "model": "store.category",
+  "pk": 1,
+  "fields": {
+    "name": "Components",
+    "slug": "components",
+    "parent": null,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 2,
+  "fields": {
+    "name": "Processors",
+    "slug": "processors",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "cpu",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 3,
+  "fields": {
+    "name": "Graphics Cards",
+    "slug": "graphics-cards",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "gpu",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 4,
+  "fields": {
+    "name": "Laptops",
+    "slug": "laptops",
+    "parent": null,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 5,
+  "fields": {
+    "name": "Motherboards",
+    "slug": "motherboards",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "motherboard",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 6,
+  "fields": {
+    "name": "RAM (Memory)",
+    "slug": "ram-memory",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "ram",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 7,
+  "fields": {
+    "name": "Storage (SSD)",
+    "slug": "storage-ssd",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "storage",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 8,
+  "fields": {
+    "name": "Power Supplies",
+    "slug": "power-supplies",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "psu",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 9,
+  "fields": {
+    "name": "Cases & Enclosures",
+    "slug": "cases-enclosures",
+    "parent": 1,
+    "description": null,
+    "icon_name": "cpu",
+    "image": "",
+    "component_type": "case",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Intel",
+    "slug": "intel",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 2,
+  "fields": {
+    "name": "AMD",
+    "slug": "amd",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 3,
+  "fields": {
+    "name": "NVIDIA",
+    "slug": "nvidia",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 4,
+  "fields": {
+    "name": "ASUS",
+    "slug": "asus",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 5,
+  "fields": {
+    "name": "MSI",
+    "slug": "msi",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 6,
+  "fields": {
+    "name": "Corsair",
+    "slug": "corsair",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Kingston",
+    "slug": "kingston",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 8,
+  "fields": {
+    "name": "Apple",
+    "slug": "apple",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 9,
+  "fields": {
+    "name": "Dell",
+    "slug": "dell",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 10,
+  "fields": {
+    "name": "Lenovo",
+    "slug": "lenovo",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "title": "Core i9-14900K Desktop Processor",
+    "slug": "intel-core-i9-14900k",
+    "brand": 1,
+    "category": 2,
+    "model_number": "BX8071514900K",
+    "description": "24 Cores (8 P-cores + 16 E-cores) up to 6.0 GHz unlocked desktop processor.",
+    "base_price": "589.99",
+    "discount_price": "549.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:28:50.407Z",
+    "updated_at": "2026-08-17T15:28:50.407Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "title": "Ryzen 7 7800X3D Gaming Processor",
+    "slug": "amd-ryzen-7-7800x3d",
+    "brand": 2,
+    "category": 2,
+    "model_number": "100-100000910WOF",
+    "description": "The ultimate gaming processor featuring 3D V-Cache technology.",
+    "base_price": "449.00",
+    "discount_price": "389.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:28:50.432Z",
+    "updated_at": "2026-08-17T15:28:50.432Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "title": "ROG Strix GeForce RTX 4090 OC Edition 24GB",
+    "slug": "asus-rog-strix-rtx-4090-24gb",
+    "brand": 4,
+    "category": 3,
+    "model_number": "ROG-STRIX-RTX4090-O24G-GAMING",
+    "description": "Extreme performance 24GB GDDR6X flagship graphics card.",
+    "base_price": "1999.99",
+    "discount_price": "1899.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:28:50.452Z",
+    "updated_at": "2026-08-17T15:28:50.452Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "title": "ASUS ROG Strix Z790-E Gaming WiFi II",
+    "slug": "asus-rog-strix-z790-e-gaming-wifi-ii",
+    "brand": 4,
+    "category": 5,
+    "model_number": "ROG STRIX Z790-E",
+    "description": "LGA 1700 ATX Motherboard with PCIe 5.0, WiFi 7, and 18+1 Power Stages.",
+    "base_price": "499.99",
+    "discount_price": "459.99",
+    "wattage": 50,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:35:28.773Z",
+    "updated_at": "2026-08-17T15:35:28.773Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "title": "Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+    "slug": "corsair-vengeance-rgb-32gb-ddr5-6000mhz",
+    "brand": 6,
+    "category": 6,
+    "model_number": "CMH32GX5M2B6000C30",
+    "description": "High performance DDR5 RAM with dynamic ten-zone RGB lighting.",
+    "base_price": "139.99",
+    "discount_price": "124.99",
+    "wattage": 15,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:35:28.781Z",
+    "updated_at": "2026-08-17T15:35:28.781Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "title": "Kingston FURY Renegade 2TB M.2 PCIe 4.0 NVMe SSD",
+    "slug": "kingston-fury-renegade-2tb-nvme-ssd",
+    "brand": 7,
+    "category": 7,
+    "model_number": "SFYRD/2000G",
+    "description": "Ultra-fast 7,300MB/s Read speed PCIe 4.0 NVMe M.2 SSD.",
+    "base_price": "179.99",
+    "discount_price": "159.99",
+    "wattage": 10,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:35:28.785Z",
+    "updated_at": "2026-08-17T15:35:28.786Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 7,
+  "fields": {
+    "title": "Corsair RM1000x 1000W 80 PLUS Gold Fully Modular Power Supply",
+    "slug": "corsair-rm1000x-1000w-psu",
+    "brand": 6,
+    "category": 8,
+    "model_number": "CP-9020201-NA",
+    "description": "Low-noise 1000 Watt 80+ Gold certified power supply with Japanese capacitors.",
+    "base_price": "189.99",
+    "discount_price": "169.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:35:28.791Z",
+    "updated_at": "2026-08-17T15:35:28.791Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 8,
+  "fields": {
+    "title": "MSI MAG FORGE 112R ARGB Mid-Tower Gaming Case",
+    "slug": "msi-mag-forge-112r-case",
+    "brand": 5,
+    "category": 9,
+    "model_number": "MAG FORGE 112R",
+    "description": "Tempered glass mid-tower casing with 4 pre-installed ARGB fans.",
+    "base_price": "89.99",
+    "discount_price": "79.99",
+    "wattage": 5,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T15:35:28.796Z",
+    "updated_at": "2026-08-17T15:35:28.796Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 9,
+  "fields": {
+    "title": "High Performance Gaming Laptop Motherboard (Dual SO-DIMM RAM Slots)",
+    "slug": "laptop-gaming-motherboard-so-dimm-ram-slots",
+    "brand": 4,
+    "category": 5,
+    "model_number": "MB-LPT-Z690",
+    "description": "Ultra-thin laptop mainboard motherboard featuring soldered Intel i7 CPU, dual SO-DIMM DDR5 RAM expansion slots, copper heatpipes, and M.2 NVMe slot.",
+    "base_price": "429.99",
+    "discount_price": "389.99",
+    "wattage": 45,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T16:46:38.913Z",
+    "updated_at": "2026-08-17T16:46:38.913Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 10,
+  "fields": {
+    "title": "Corsair Virtus 32GB (2x16GB) DDR5 5600MHz SO-DIMM Laptop RAM",
+    "slug": "corsair-virtus-32gb-ddr5-laptop-ram",
+    "brand": 6,
+    "category": 6,
+    "model_number": "CMSX32GX5M2A5600C40",
+    "description": "Premium high-density DDR5 SO-DIMM RAM module designed for modern gaming laptops, ultrabooks, and portable workstations.",
+    "base_price": "149.99",
+    "discount_price": "129.99",
+    "wattage": 10,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T16:46:38.931Z",
+    "updated_at": "2026-08-17T16:46:38.931Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 11,
+  "fields": {
+    "title": "ASUS ROG Strix SCAR 18 (2026) 18\" 240Hz QHD Gaming Laptop",
+    "slug": "asus-rog-strix-scar-18-gaming-laptop",
+    "brand": 4,
+    "category": 4,
+    "model_number": "G834JYR-XS96",
+    "description": "Ultimate gaming laptop powered by Intel Core i9-14900HX, NVIDIA GeForce RTX 4090 16GB, 32GB DDR5 RAM, and 2TB PCIe 4.0 NVMe SSD.",
+    "base_price": "3699.99",
+    "discount_price": "3499.99",
+    "wattage": 330,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T17:01:12.461Z",
+    "updated_at": "2026-08-17T17:01:12.461Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 12,
+  "fields": {
+    "title": "Apple MacBook Pro 16-inch M3 Max (36GB Unified Memory, 1TB SSD) - Space Black",
+    "slug": "apple-macbook-pro-16-m3-max-space-black",
+    "brand": 8,
+    "category": 4,
+    "model_number": "MUW63LL/A",
+    "description": "Pro performance workstation featuring 16-core CPU, 40-core GPU, 16.2-inch Liquid Retina XDR Display, and 22-hour battery life.",
+    "base_price": "3499.00",
+    "discount_price": "3299.99",
+    "wattage": 140,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T17:01:12.480Z",
+    "updated_at": "2026-08-17T17:01:12.480Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 13,
+  "fields": {
+    "title": "Dell XPS 15 (9530) 15.6\" 3.5K OLED Touch Laptop",
+    "slug": "dell-xps-15-9530-oled-touch-laptop",
+    "brand": 9,
+    "category": 4,
+    "model_number": "XPS9530-9743SLV-PUS",
+    "description": "Premium thin & light ultrabook featuring Intel Core i9-13900H, NVIDIA GeForce RTX 4070 8GB, 32GB DDR5 RAM, and 1TB NVMe SSD.",
+    "base_price": "2499.99",
+    "discount_price": "2249.99",
+    "wattage": 130,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T17:01:12.495Z",
+    "updated_at": "2026-08-17T17:01:12.495Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 14,
+  "fields": {
+    "title": "Lenovo Legion Pro 7i Gen 9 16\" 240Hz WQXGA Gaming Laptop",
+    "slug": "lenovo-legion-pro-7i-gen-9-gaming-laptop",
+    "brand": 10,
+    "category": 4,
+    "model_number": "83DE0007US",
+    "description": "High refresh rate esports gaming laptop with Intel Core i9-14900HX, RTX 4080 12GB, 32GB DDR5 RAM, 1TB SSD, and Legion Coldfront Vapor Chamber cooling.",
+    "base_price": "2799.99",
+    "discount_price": "2549.99",
+    "wattage": 330,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-17T17:01:12.507Z",
+    "updated_at": "2026-08-17T17:01:12.507Z"
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 1,
+  "fields": {
+    "name": "Socket",
+    "category": 2,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 2,
+  "fields": {
+    "name": "Cores",
+    "category": 2,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 3,
+  "fields": {
+    "name": "Boost Clock",
+    "category": 2,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 4,
+  "fields": {
+    "name": "Memory Type",
+    "category": 2,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 5,
+  "fields": {
+    "name": "VRAM Capacity",
+    "category": 3,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "key": 1,
+    "value": "LGA1700"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "key": 2,
+    "value": "24"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "key": 3,
+    "value": "6.0 GHz"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 4,
+  "fields": {
+    "product": 1,
+    "key": 4,
+    "value": "DDR5"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "key": 1,
+    "value": "AM5"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 6,
+  "fields": {
+    "product": 2,
+    "key": 2,
+    "value": "8"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 7,
+  "fields": {
+    "product": 2,
+    "key": 3,
+    "value": "5.0 GHz"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 8,
+  "fields": {
+    "product": 2,
+    "key": 4,
+    "value": "DDR5"
+  }
+},
+{
+  "model": "store.variantattribute",
+  "pk": 1,
+  "fields": {
+    "name": "Packaging & Bundle"
+  }
+},
+{
+  "model": "store.variantattribute",
+  "pk": 2,
+  "fields": {
+    "name": "Packaging"
+  }
+},
+{
+  "model": "store.variantattributevalue",
+  "pk": 1,
+  "fields": {
+    "attribute": 1,
+    "value": "Standard Box"
+  }
+},
+{
+  "model": "store.variantattributevalue",
+  "pk": 2,
+  "fields": {
+    "attribute": 1,
+    "value": "Bundle with Liquid Cooler"
+  }
+},
+{
+  "model": "store.variantattributevalue",
+  "pk": 3,
+  "fields": {
+    "attribute": 2,
+    "value": "Standard Box"
+  }
+},
+{
+  "model": "store.productvariant",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "sku": "I9-14900K-BOX",
+    "title": "Standard Boxed Edition",
+    "price": "549.99",
+    "discount_price": null,
+    "stock_quantity": 35,
+    "is_default": true,
+    "is_active": true,
+    "created_at": "2026-08-17T15:28:50.469Z",
+    "attribute_values": [
+      1,
+      3
+    ]
+  }
+},
+{
+  "model": "store.productvariant",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "sku": "I9-14900K-BUNDLE",
+    "title": "Processor + 360mm AIO Cooler Bundle",
+    "price": "699.99",
+    "discount_price": null,
+    "stock_quantity": 12,
+    "is_default": false,
+    "is_active": true,
+    "created_at": "2026-08-17T15:28:50.476Z",
+    "attribute_values": [
+      2
+    ]
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "products/processor_demo.png",
+    "alt_text": "Core i9-14900K Desktop Processor",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 2,
+  "fields": {
+    "product": 2,
+    "image": "products/processor_demo.png",
+    "alt_text": "Ryzen 7 7800X3D Gaming Processor",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 4,
+    "image": "products/processor_demo.png",
+    "alt_text": "ASUS ROG Strix Z790-E Gaming WiFi II",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 3,
+    "image": "products/gpu_demo.png",
+    "alt_text": "ROG Strix GeForce RTX 4090 OC Edition 24GB",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 5,
+    "image": "products/processor_demo.png",
+    "alt_text": "Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 6,
+    "image": "products/processor_demo.png",
+    "alt_text": "Kingston FURY Renegade 2TB M.2 PCIe 4.0 NVMe SSD",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 7,
+    "image": "products/processor_demo.png",
+    "alt_text": "Corsair RM1000x 1000W 80 PLUS Gold Fully Modular Power Supply",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 8,
+    "image": "products/gpu_demo.png",
+    "alt_text": "MSI MAG FORGE 112R ARGB Mid-Tower Gaming Case",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 9,
+  "fields": {
+    "product": 1,
+    "image": "products/cpu_white.png",
+    "alt_text": "Core i9-14900K Desktop Processor",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 2,
+    "image": "products/cpu_white.png",
+    "alt_text": "Ryzen 7 7800X3D Gaming Processor",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 4,
+    "image": "products/monitor_white.png",
+    "alt_text": "ASUS ROG Strix Z790-E Gaming WiFi II",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 3,
+    "image": "products/gpu_white.png",
+    "alt_text": "ROG Strix GeForce RTX 4090 OC Edition 24GB",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 13,
+  "fields": {
+    "product": 5,
+    "image": "products/cpu_white.png",
+    "alt_text": "Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 14,
+  "fields": {
+    "product": 6,
+    "image": "products/monitor_white.png",
+    "alt_text": "Kingston FURY Renegade 2TB M.2 PCIe 4.0 NVMe SSD",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 15,
+  "fields": {
+    "product": 7,
+    "image": "products/cpu_white.png",
+    "alt_text": "Corsair RM1000x 1000W 80 PLUS Gold Fully Modular Power Supply",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 16,
+  "fields": {
+    "product": 8,
+    "image": "products/gpu_white.png",
+    "alt_text": "MSI MAG FORGE 112R ARGB Mid-Tower Gaming Case",
+    "is_primary": false,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 17,
+  "fields": {
+    "product": 4,
+    "image": "products/motherboard_white.png",
+    "alt_text": "ASUS ROG Strix Z790-E Gaming WiFi II",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 18,
+  "fields": {
+    "product": 5,
+    "image": "products/ram_white.png",
+    "alt_text": "Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 19,
+  "fields": {
+    "product": 9,
+    "image": "products/laptop_motherboard.png",
+    "alt_text": "High Performance Gaming Laptop Motherboard (Dual SO-DIMM RAM Slots)",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 20,
+  "fields": {
+    "product": 10,
+    "image": "products/laptop_ram.png",
+    "alt_text": "Corsair Virtus 32GB (2x16GB) DDR5 5600MHz SO-DIMM Laptop RAM",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 21,
+  "fields": {
+    "product": 6,
+    "image": "products/ssd_white.png",
+    "alt_text": "Kingston FURY Renegade 2TB M.2 PCIe 4.0 NVMe SSD",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 22,
+  "fields": {
+    "product": 7,
+    "image": "products/psu_white.png",
+    "alt_text": "Corsair RM1000x 1000W 80 PLUS Gold Fully Modular Power Supply",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 23,
+  "fields": {
+    "product": 8,
+    "image": "products/case_white.png",
+    "alt_text": "MSI MAG FORGE 112R ARGB Mid-Tower Gaming Case",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 24,
+  "fields": {
+    "product": 11,
+    "image": "products/laptop_asus_rog.png",
+    "alt_text": "ASUS ROG Strix SCAR 18 (2026) 18\" 240Hz QHD Gaming Laptop",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 25,
+  "fields": {
+    "product": 12,
+    "image": "products/laptop_macbook.png",
+    "alt_text": "Apple MacBook Pro 16-inch M3 Max (36GB Unified Memory, 1TB SSD) - Space Black",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 26,
+  "fields": {
+    "product": 13,
+    "image": "products/laptop_dell_xps.png",
+    "alt_text": "Dell XPS 15 (9530) 15.6\" 3.5K OLED Touch Laptop",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 27,
+  "fields": {
+    "product": 14,
+    "image": "products/laptop_lenovo_legion.png",
+    "alt_text": "Lenovo Legion Pro 7i Gen 9 16\" 240Hz WQXGA Gaming Laptop",
+    "is_primary": true,
+    "display_order": 0
+  }
+}
+]
