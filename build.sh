@@ -2,18 +2,18 @@
 set -o errexit
 
 echo "==> Installing Dependencies..."
-pip install --upgrade pip
-pip install -r requirements.txt
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
 
 echo "==> Collecting Static Files..."
-python manage.py collectstatic --no-input
+python3 manage.py collectstatic --no-input
 
 echo "==> Running Database Migrations..."
-python manage.py migrate --no-input
+python3 manage.py migrate --no-input
 
 echo "==> Creating Production Admin User..."
 
-python manage.py shell -c "
+python3 manage.py shell -c "
 import os
 from django.contrib.auth import get_user_model
 
@@ -48,6 +48,6 @@ else:
 "
 
 echo "==> Loading Store Data..."
-python manage.py loaddata store_data.json
+python3 manage.py loaddata store_data.json
 
 echo "==> Deployment Build Completed Successfully!"
