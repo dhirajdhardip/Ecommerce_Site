@@ -47,4 +47,7 @@ else:
     print('Production admin variables not configured.')
 "
 
+echo "==> Loading Store Data..."
+python manage.py loaddata store_data.json
+
 echo "==> Deployment Build Completed Successfully!"
