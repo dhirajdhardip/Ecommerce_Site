@@ -50,4 +50,7 @@ else:
 echo "==> Loading Store Data..."
 python3 manage.py loaddata store_data.json
 
+echo "==> Uploading Media Files to Cloudinary..."
+python3 manage.py upload_media_to_cloudinary || echo "Media upload skipped (Cloudinary not configured or no local media)."
+
 echo "==> Deployment Build Completed Successfully!"

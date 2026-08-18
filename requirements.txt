@@ -5,3 +5,5 @@ gunicorn>=21.2.0
 whitenoise[brotli]>=6.6.0
 python-dotenv>=1.0.1
 Pillow>=10.2.0
+cloudinary>=1.36.0
+django-cloudinary-storage>=0.3.0
