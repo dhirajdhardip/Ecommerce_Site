@@ -102,8 +102,7 @@
                         <label
                             class="flex items-center justify-between p-3.5 bg-white border border-slate-200 hover:border-[#ef4a23] rounded-xl cursor-pointer group transition-all shadow-sm">
                             <span class="flex items-center">
-                                <input type="radio" name="variant_choice" value="{{ variant.id }}" {% if
-                                    variant.is_default or forloop.first %}checked{% endif %}
+                                <input type="radio" name="variant_choice" value="{{ variant.id }}" {% if variant.is_default or forloop.first %}checked{% endif %}
                                     onclick="updateVariantPrice('{{ variant.effective_price }}')"
                                     class="w-4 h-4 text-[#ef4a23] bg-white border-slate-300 focus:ring-[#ef4a23]">
                                 <span
