@@ -85,10 +85,9 @@
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="text-center mb-6">
         <h2 class="text-xs font-extrabold uppercase tracking-widest text-[#ef4a23] mb-1">Top Hardware Categories</h2>
-        <p class="text-2xl font-black text-[#081621]">Search by Component</p>
     </div>
 
-    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4">
         
         <a href="{% url 'store:catalog' %}?categories=processors" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
             <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
@@ -101,7 +100,28 @@
             <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             </div>
-            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Graphics Cards</span>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">GPUs</span>
+        </a>
+
+        <a href="{% url 'store:catalog' %}?categories=smartphones" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Smartphones</span>
+        </a>
+
+        <a href="{% url 'store:catalog' %}?categories=monitors" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Monitors</span>
+        </a>
+
+        <a href="{% url 'store:catalog' %}?categories=mice-accessories" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
+            <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+            </div>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Gaming Mice</span>
         </a>
 
         <a href="{% url 'store:catalog' %}?categories=laptops" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
@@ -111,16 +131,9 @@
             <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Laptops</span>
         </a>
 
-        <a href="{% url 'store:catalog' %}?categories=motherboards" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
-            <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            </div>
-            <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">Motherboards</span>
-        </a>
-
         <a href="{% url 'store:catalog' %}?categories=ram-memory" class="group bg-white border border-slate-200 hover:border-[#ef4a23] rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 shadow-sm">
             <div class="w-12 h-12 mx-auto bg-slate-100 rounded-xl flex items-center justify-center text-[#ef4a23] mb-3 group-hover:scale-110 group-hover:bg-[#ef4a23] group-hover:text-white transition-all">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8-4"></path></svg>
             </div>
             <span class="text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors block">RAM & SSD</span>
         </a>

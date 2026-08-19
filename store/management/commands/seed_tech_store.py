@@ -23,6 +23,9 @@ class Command(BaseCommand):
         psu_cat, _ = Category.objects.get_or_create(slug='power-supplies', defaults={'name': 'Power Supplies', 'parent': comp_cat, 'component_type': 'psu'})
         case_cat, _ = Category.objects.get_or_create(slug='cases-enclosures', defaults={'name': 'Cases & Enclosures', 'parent': comp_cat, 'component_type': 'case'})
         laptop_cat, _ = Category.objects.get_or_create(slug='laptops', defaults={'name': 'Laptops', 'component_type': 'none'})
+        smartphone_cat, _ = Category.objects.get_or_create(slug='smartphones', defaults={'name': 'Smartphones', 'component_type': 'none', 'icon_name': 'smartphone'})
+        monitor_cat, _ = Category.objects.get_or_create(slug='monitors', defaults={'name': 'Monitors', 'component_type': 'none', 'icon_name': 'monitor'})
+        mouse_cat, _ = Category.objects.get_or_create(slug='mice-accessories', defaults={'name': 'Mice & Accessories', 'component_type': 'none', 'icon_name': 'mouse'})
 
         for cat, ctype in [(cpu_cat, 'cpu'), (gpu_cat, 'gpu'), (mb_cat, 'motherboard'), (ram_cat, 'ram'), (ssd_cat, 'storage'), (psu_cat, 'psu'), (case_cat, 'case')]:
             cat.component_type = ctype
@@ -39,10 +42,32 @@ class Command(BaseCommand):
         apple, _ = Brand.objects.get_or_create(slug='apple', defaults={'name': 'Apple'})
         dell, _ = Brand.objects.get_or_create(slug='dell', defaults={'name': 'Dell'})
         lenovo, _ = Brand.objects.get_or_create(slug='lenovo', defaults={'name': 'Lenovo'})
+        samsung, _ = Brand.objects.get_or_create(slug='samsung', defaults={'name': 'Samsung'})
+        logitech, _ = Brand.objects.get_or_create(slug='logitech', defaults={'name': 'Logitech'})
 
         # 3. Spec Keys
         socket_key, _ = SpecificationKey.objects.get_or_create(name='Socket', category=cpu_cat)
         cores_key, _ = SpecificationKey.objects.get_or_create(name='Cores', category=cpu_cat)
+        clock_key, _ = SpecificationKey.objects.get_or_create(name='Boost Clock', category=cpu_cat)
+        mem_key, _ = SpecificationKey.objects.get_or_create(name='Memory Type', category=cpu_cat)
+
+        # Phone Spec Keys
+        phone_disp_key, _ = SpecificationKey.objects.get_or_create(name='Display', category=smartphone_cat)
+        phone_cpu_key, _ = SpecificationKey.objects.get_or_create(name='Processor', category=smartphone_cat)
+        phone_cam_key, _ = SpecificationKey.objects.get_or_create(name='Camera', category=smartphone_cat)
+        phone_bat_key, _ = SpecificationKey.objects.get_or_create(name='Battery', category=smartphone_cat)
+
+        # Monitor Spec Keys
+        mon_res_key, _ = SpecificationKey.objects.get_or_create(name='Resolution', category=monitor_cat)
+        mon_hz_key, _ = SpecificationKey.objects.get_or_create(name='Refresh Rate', category=monitor_cat)
+        mon_panel_key, _ = SpecificationKey.objects.get_or_create(name='Panel Type', category=monitor_cat)
+        mon_resp_key, _ = SpecificationKey.objects.get_or_create(name='Response Time', category=monitor_cat)
+
+        # Mouse Spec Keys
+        mouse_sensor_key, _ = SpecificationKey.objects.get_or_create(name='Sensor', category=mouse_cat)
+        mouse_dpi_key, _ = SpecificationKey.objects.get_or_create(name='Max DPI', category=mouse_cat)
+        mouse_weight_key, _ = SpecificationKey.objects.get_or_create(name='Weight', category=mouse_cat)
+
         clock_key, _ = SpecificationKey.objects.get_or_create(name='Boost Clock', category=cpu_cat)
         mem_key, _ = SpecificationKey.objects.get_or_create(name='Memory Type', category=cpu_cat)
 
@@ -331,6 +356,80 @@ class Command(BaseCommand):
         img14, _ = ProductImage.objects.get_or_create(product=p14, image='products/laptop_lenovo_legion.png', defaults={'is_primary': True, 'alt_text': p14.title})
         img14.image = 'products/laptop_lenovo_legion.png'
         img14.save()
+
+        # Product 15: Samsung Galaxy S26 Ultra 5G AI Smartphone
+        p15, _ = Product.objects.get_or_create(
+            slug='samsung-galaxy-s26-ultra-5g',
+            defaults={
+                'title': 'Samsung Galaxy S26 Ultra 5G AI Flagship Smartphone (12GB RAM, 512GB Storage)',
+                'brand': samsung,
+                'category': smartphone_cat,
+                'model_number': 'SM-S938B/DS',
+                'description': 'Next-generation flagship smartphone powered by Snapdragon 8 Gen 5, 200MP Quad Camera with Galaxy AI, 6.8" Dynamic AMOLED 2X 120Hz display, titanium body, and built-in S Pen.',
+                'base_price': Decimal('1399.99'),
+                'discount_price': Decimal('1299.99'),
+                'wattage': 0,
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img15, _ = ProductImage.objects.get_or_create(product=p15, image='products/smartphone_s26.png', defaults={'is_primary': True, 'alt_text': p15.title})
+        img15.image = 'products/smartphone_s26.png'
+        img15.save()
+
+        ProductSpecification.objects.get_or_create(product=p15, key=phone_disp_key, defaults={'value': '6.8" Dynamic AMOLED 2X 120Hz'})
+        ProductSpecification.objects.get_or_create(product=p15, key=phone_cpu_key, defaults={'value': 'Snapdragon 8 Gen 5'})
+        ProductSpecification.objects.get_or_create(product=p15, key=phone_cam_key, defaults={'value': '200MP + 50MP + 50MP + 10MP Quad'})
+        ProductSpecification.objects.get_or_create(product=p15, key=phone_bat_key, defaults={'value': '5000 mAh (45W Fast Charge)'})
+
+        # Product 16: Samsung Odyssey OLED G9 49" Gaming Monitor
+        p16, _ = Product.objects.get_or_create(
+            slug='samsung-odyssey-oled-g9-49-curved-gaming-monitor',
+            defaults={
+                'title': 'Samsung Odyssey OLED G9 49" DQHD 240Hz 0.03ms Curved Gaming Monitor',
+                'brand': samsung,
+                'category': monitor_cat,
+                'model_number': 'LS49CG950SNXZA',
+                'description': 'World premier 49" dual QHD OLED gaming monitor featuring 1800R curvature, 240Hz ultra refresh rate, 0.03ms response time, Neo Quantum Processor Pro, and DisplayHDR True Black 400.',
+                'base_price': Decimal('1599.99'),
+                'discount_price': Decimal('1399.99'),
+                'wattage': 0,
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img16, _ = ProductImage.objects.get_or_create(product=p16, image='products/monitor_gaming.png', defaults={'is_primary': True, 'alt_text': p16.title})
+        img16.image = 'products/monitor_gaming.png'
+        img16.save()
+
+        ProductSpecification.objects.get_or_create(product=p16, key=mon_res_key, defaults={'value': 'Dual QHD (5120 x 1440)'})
+        ProductSpecification.objects.get_or_create(product=p16, key=mon_hz_key, defaults={'value': '240 Hz'})
+        ProductSpecification.objects.get_or_create(product=p16, key=mon_panel_key, defaults={'value': 'OLED 1800R Curved'})
+        ProductSpecification.objects.get_or_create(product=p16, key=mon_resp_key, defaults={'value': '0.03ms (GtG)'})
+
+        # Product 17: Logitech G PRO X SUPERLIGHT 2 Wireless Gaming Mouse
+        p17, _ = Product.objects.get_or_create(
+            slug='logitech-g-pro-x-superlight-2-wireless-gaming-mouse',
+            defaults={
+                'title': 'Logitech G PRO X SUPERLIGHT 2 Wireless Gaming Mouse - Black',
+                'brand': logitech,
+                'category': mouse_cat,
+                'model_number': '910-006796',
+                'description': 'Iconic 60g ultra-lightweight wireless esports gaming mouse with HERO 2 sensor up to 32,000 DPI, LIGHTFORCE hybrid optical-mechanical switches, zero-additive PTFE feet, and 95-hour battery life.',
+                'base_price': Decimal('169.99'),
+                'discount_price': Decimal('149.99'),
+                'wattage': 0,
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img17, _ = ProductImage.objects.get_or_create(product=p17, image='products/mouse_gaming.png', defaults={'is_primary': True, 'alt_text': p17.title})
+        img17.image = 'products/mouse_gaming.png'
+        img17.save()
+
+        ProductSpecification.objects.get_or_create(product=p17, key=mouse_sensor_key, defaults={'value': 'HERO 2'})
+        ProductSpecification.objects.get_or_create(product=p17, key=mouse_dpi_key, defaults={'value': '32,000 DPI'})
+        ProductSpecification.objects.get_or_create(product=p17, key=mouse_weight_key, defaults={'value': '60g Ultra Light'})
 
         # 5. Variants Setup
         var_attr, _ = VariantAttribute.objects.get_or_create(name='Packaging')

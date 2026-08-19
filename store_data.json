@@ -135,6 +135,51 @@
   }
 },
 {
+  "model": "store.category",
+  "pk": 10,
+  "fields": {
+    "name": "Smartphones",
+    "slug": "smartphones",
+    "parent": null,
+    "description": null,
+    "icon_name": "smartphone",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 11,
+  "fields": {
+    "name": "Monitors",
+    "slug": "monitors",
+    "parent": null,
+    "description": null,
+    "icon_name": "monitor",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 12,
+  "fields": {
+    "name": "Mice & Accessories",
+    "slug": "mice-accessories",
+    "parent": null,
+    "description": null,
+    "icon_name": "mouse",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
   "model": "store.brand",
   "pk": 1,
   "fields": {
@@ -239,6 +284,28 @@
   "fields": {
     "name": "Lenovo",
     "slug": "lenovo",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 11,
+  "fields": {
+    "name": "Samsung",
+    "slug": "samsung",
+    "logo": "",
+    "website": null,
+    "is_active": true
+  }
+},
+{
+  "model": "store.brand",
+  "pk": 12,
+  "fields": {
+    "name": "Logitech",
+    "slug": "logitech",
     "logo": "",
     "website": null,
     "is_active": true
@@ -553,6 +620,72 @@
   }
 },
 {
+  "model": "store.product",
+  "pk": 15,
+  "fields": {
+    "title": "Samsung Galaxy S26 Ultra 5G AI Flagship Smartphone (12GB RAM, 512GB Storage)",
+    "slug": "samsung-galaxy-s26-ultra-5g",
+    "brand": 11,
+    "category": 10,
+    "model_number": "SM-S938B/DS",
+    "description": "Next-generation flagship smartphone powered by Snapdragon 8 Gen 5, 200MP Quad Camera with Galaxy AI, 6.8\" Dynamic AMOLED 2X 120Hz display, titanium body, and built-in S Pen.",
+    "base_price": "1399.99",
+    "discount_price": "1299.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T15:52:35.723Z",
+    "updated_at": "2026-08-19T15:52:35.723Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 16,
+  "fields": {
+    "title": "Samsung Odyssey OLED G9 49\" DQHD 240Hz 0.03ms Curved Gaming Monitor",
+    "slug": "samsung-odyssey-oled-g9-49-curved-gaming-monitor",
+    "brand": 11,
+    "category": 11,
+    "model_number": "LS49CG950SNXZA",
+    "description": "World premier 49\" dual QHD OLED gaming monitor featuring 1800R curvature, 240Hz ultra refresh rate, 0.03ms response time, Neo Quantum Processor Pro, and DisplayHDR True Black 400.",
+    "base_price": "1599.99",
+    "discount_price": "1399.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T15:52:35.762Z",
+    "updated_at": "2026-08-19T15:52:35.762Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 17,
+  "fields": {
+    "title": "Logitech G PRO X SUPERLIGHT 2 Wireless Gaming Mouse - Black",
+    "slug": "logitech-g-pro-x-superlight-2-wireless-gaming-mouse",
+    "brand": 12,
+    "category": 12,
+    "model_number": "910-006796",
+    "description": "Iconic 60g ultra-lightweight wireless esports gaming mouse with HERO 2 sensor up to 32,000 DPI, LIGHTFORCE hybrid optical-mechanical switches, zero-additive PTFE feet, and 95-hour battery life.",
+    "base_price": "169.99",
+    "discount_price": "149.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T15:52:35.790Z",
+    "updated_at": "2026-08-19T15:52:35.790Z"
+  }
+},
+{
   "model": "store.specificationkey",
   "pk": 1,
   "fields": {
@@ -594,6 +727,105 @@
   "fields": {
     "name": "VRAM Capacity",
     "category": 3,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 6,
+  "fields": {
+    "name": "Display",
+    "category": 10,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 7,
+  "fields": {
+    "name": "Processor",
+    "category": 10,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 8,
+  "fields": {
+    "name": "Camera",
+    "category": 10,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 9,
+  "fields": {
+    "name": "Battery",
+    "category": 10,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 10,
+  "fields": {
+    "name": "Resolution",
+    "category": 11,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 11,
+  "fields": {
+    "name": "Refresh Rate",
+    "category": 11,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 12,
+  "fields": {
+    "name": "Panel Type",
+    "category": 11,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 13,
+  "fields": {
+    "name": "Response Time",
+    "category": 11,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 14,
+  "fields": {
+    "name": "Sensor",
+    "category": 12,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 15,
+  "fields": {
+    "name": "Max DPI",
+    "category": 12,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 16,
+  "fields": {
+    "name": "Weight",
+    "category": 12,
     "display_order": 0
   }
 },
@@ -667,6 +899,105 @@
     "product": 2,
     "key": 4,
     "value": "DDR5"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 9,
+  "fields": {
+    "product": 15,
+    "key": 6,
+    "value": "6.8\" Dynamic AMOLED 2X 120Hz"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 10,
+  "fields": {
+    "product": 15,
+    "key": 7,
+    "value": "Snapdragon 8 Gen 5"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 11,
+  "fields": {
+    "product": 15,
+    "key": 8,
+    "value": "200MP + 50MP + 50MP + 10MP Quad"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 12,
+  "fields": {
+    "product": 15,
+    "key": 9,
+    "value": "5000 mAh (45W Fast Charge)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 13,
+  "fields": {
+    "product": 16,
+    "key": 10,
+    "value": "Dual QHD (5120 x 1440)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 14,
+  "fields": {
+    "product": 16,
+    "key": 11,
+    "value": "240 Hz"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 15,
+  "fields": {
+    "product": 16,
+    "key": 12,
+    "value": "OLED 1800R Curved"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 16,
+  "fields": {
+    "product": 16,
+    "key": 13,
+    "value": "0.03ms (GtG)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 17,
+  "fields": {
+    "product": 17,
+    "key": 14,
+    "value": "HERO 2"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 18,
+  "fields": {
+    "product": 17,
+    "key": 15,
+    "value": "32,000 DPI"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 19,
+  "fields": {
+    "product": 17,
+    "key": 16,
+    "value": "60g Ultra Light"
   }
 },
 {
@@ -1039,6 +1370,67 @@
     "alt_text": "Lenovo Legion Pro 7i Gen 9 16\" 240Hz WQXGA Gaming Laptop",
     "is_primary": true,
     "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 28,
+  "fields": {
+    "product": 15,
+    "image": "products/smartphone_s26.png",
+    "alt_text": "Samsung Galaxy S26 Ultra 5G AI Flagship Smartphone (12GB RAM, 512GB Storage)",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 29,
+  "fields": {
+    "product": 16,
+    "image": "products/monitor_gaming.png",
+    "alt_text": "Samsung Odyssey OLED G9 49\" DQHD 240Hz 0.03ms Curved Gaming Monitor",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 17,
+    "image": "products/mouse_gaming.png",
+    "alt_text": "Logitech G PRO X SUPERLIGHT 2 Wireless Gaming Mouse - Black",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "cart.coupon",
+  "pk": 1,
+  "fields": {
+    "code": "WELCOME10",
+    "discount_type": "percentage",
+    "discount_value": "10.00",
+    "min_order_amount": "100.00",
+    "active": true,
+    "expires_at": null,
+    "usage_limit": 100,
+    "used_count": 0
+  }
+},
+{
+  "model": "cart.coupon",
+  "pk": 2,
+  "fields": {
+    "code": "TECH50",
+    "discount_type": "fixed",
+    "discount_value": "50.00",
+    "min_order_amount": "300.00",
+    "active": true,
+    "expires_at": null,
+    "usage_limit": 100,
+    "used_count": 0
   }
 }
 ]
