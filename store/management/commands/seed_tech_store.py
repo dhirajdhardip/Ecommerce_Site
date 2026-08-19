@@ -26,6 +26,8 @@ class Command(BaseCommand):
         smartphone_cat, _ = Category.objects.get_or_create(slug='smartphones', defaults={'name': 'Smartphones', 'component_type': 'none', 'icon_name': 'smartphone'})
         monitor_cat, _ = Category.objects.get_or_create(slug='monitors', defaults={'name': 'Monitors', 'component_type': 'none', 'icon_name': 'monitor'})
         mouse_cat, _ = Category.objects.get_or_create(slug='mice-accessories', defaults={'name': 'Mice & Accessories', 'component_type': 'none', 'icon_name': 'mouse'})
+        smartwatch_cat, _ = Category.objects.get_or_create(slug='smartwatches', defaults={'name': 'Smartwatches', 'component_type': 'none', 'icon_name': 'clock'})
+        earbuds_cat, _ = Category.objects.get_or_create(slug='earbuds', defaults={'name': 'Earbuds & Audio', 'component_type': 'none', 'icon_name': 'headphones'})
 
         for cat, ctype in [(cpu_cat, 'cpu'), (gpu_cat, 'gpu'), (mb_cat, 'motherboard'), (ram_cat, 'ram'), (ssd_cat, 'storage'), (psu_cat, 'psu'), (case_cat, 'case')]:
             cat.component_type = ctype
@@ -68,8 +70,17 @@ class Command(BaseCommand):
         mouse_dpi_key, _ = SpecificationKey.objects.get_or_create(name='Max DPI', category=mouse_cat)
         mouse_weight_key, _ = SpecificationKey.objects.get_or_create(name='Weight', category=mouse_cat)
 
-        clock_key, _ = SpecificationKey.objects.get_or_create(name='Boost Clock', category=cpu_cat)
-        mem_key, _ = SpecificationKey.objects.get_or_create(name='Memory Type', category=cpu_cat)
+        # Smartwatch Spec Keys
+        sw_disp_key, _ = SpecificationKey.objects.get_or_create(name='Display & Size', category=smartwatch_cat)
+        sw_chip_key, _ = SpecificationKey.objects.get_or_create(name='Processor / Chip', category=smartwatch_cat)
+        sw_bat_key, _ = SpecificationKey.objects.get_or_create(name='Battery Life', category=smartwatch_cat)
+        sw_water_key, _ = SpecificationKey.objects.get_or_create(name='Water Resistance', category=smartwatch_cat)
+
+        # Earbuds Spec Keys
+        eb_chip_key, _ = SpecificationKey.objects.get_or_create(name='Audio Chip', category=earbuds_cat)
+        eb_anc_key, _ = SpecificationKey.objects.get_or_create(name='Noise Cancellation', category=earbuds_cat)
+        eb_bat_key, _ = SpecificationKey.objects.get_or_create(name='Play Time', category=earbuds_cat)
+        eb_conn_key, _ = SpecificationKey.objects.get_or_create(name='Connectivity', category=earbuds_cat)
 
         # 4. Products, White-Background Cutout Images & Specs
         # Product 1: Intel i9-14900K
@@ -430,6 +441,78 @@ class Command(BaseCommand):
         ProductSpecification.objects.get_or_create(product=p17, key=mouse_sensor_key, defaults={'value': 'HERO 2'})
         ProductSpecification.objects.get_or_create(product=p17, key=mouse_dpi_key, defaults={'value': '32,000 DPI'})
         ProductSpecification.objects.get_or_create(product=p17, key=mouse_weight_key, defaults={'value': '60g Ultra Light'})
+
+        # Product 18: Apple Watch Ultra 2
+        p18, _ = Product.objects.get_or_create(
+            slug='apple-watch-ultra-2-gps-cellular',
+            defaults={
+                'title': 'Apple Watch Ultra 2 GPS + Cellular (Titanium)',
+                'brand': apple,
+                'category': smartwatch_cat,
+                'model_number': 'MREG3LL/A',
+                'description': 'Rugged and capable titanium smartwatch with S9 SiP, double tap gesture, brightest Apple display (3000 nits), and up to 36 hours battery life.',
+                'base_price': Decimal('799.99'),
+                'discount_price': Decimal('749.99'),
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img18, _ = ProductImage.objects.get_or_create(product=p18, image='products/smartwatch_apple.png', defaults={'is_primary': True, 'alt_text': p18.title})
+        img18.image = 'products/smartwatch_apple.png'
+        img18.save()
+
+        ProductSpecification.objects.get_or_create(product=p18, key=sw_disp_key, defaults={'value': '49mm Always-On Retina OLED (3000 nits)'})
+        ProductSpecification.objects.get_or_create(product=p18, key=sw_chip_key, defaults={'value': 'Apple S9 SiP (64-bit dual core)'})
+        ProductSpecification.objects.get_or_create(product=p18, key=sw_bat_key, defaults={'value': 'Up to 36 Hours (72 Hours Low Power)'})
+        ProductSpecification.objects.get_or_create(product=p18, key=sw_water_key, defaults={'value': '100m Water Resistant (WR100)'})
+
+        # Product 19: Apple AirPods Pro 2nd Gen
+        p19, _ = Product.objects.get_or_create(
+            slug='apple-airpods-pro-2nd-gen-usbc',
+            defaults={
+                'title': 'Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)',
+                'brand': apple,
+                'category': earbuds_cat,
+                'model_number': 'MTJV3AM/A',
+                'description': 'Pro-level Active Noise Cancellation, Adaptive Audio, Transparency mode, Spatial Audio with dynamic head tracking, and USB-C MagSafe case.',
+                'base_price': Decimal('249.99'),
+                'discount_price': Decimal('199.99'),
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img19, _ = ProductImage.objects.get_or_create(product=p19, image='products/earbuds_airpods.png', defaults={'is_primary': True, 'alt_text': p19.title})
+        img19.image = 'products/earbuds_airpods.png'
+        img19.save()
+
+        ProductSpecification.objects.get_or_create(product=p19, key=eb_chip_key, defaults={'value': 'Apple H2 Headphone Chip'})
+        ProductSpecification.objects.get_or_create(product=p19, key=eb_anc_key, defaults={'value': '2x Active Noise Cancellation & Adaptive Audio'})
+        ProductSpecification.objects.get_or_create(product=p19, key=eb_bat_key, defaults={'value': 'Up to 6 Hours (30 Hours with Case)'})
+        ProductSpecification.objects.get_or_create(product=p19, key=eb_conn_key, defaults={'value': 'Bluetooth 5.3 & MagSafe USB-C Case'})
+
+        # Product 20: Apple Watch Series 9
+        p20, _ = Product.objects.get_or_create(
+            slug='apple-watch-series-9-gps-45mm',
+            defaults={
+                'title': 'Apple Watch Series 9 GPS 45mm Aluminium Case',
+                'brand': apple,
+                'category': smartwatch_cat,
+                'model_number': 'MR993LL/A',
+                'description': 'Apple S9 SiP chip, magical double tap gesture control, brighter 2000 nits display, precision finding for iPhone, and advanced health tracking.',
+                'base_price': Decimal('429.99'),
+                'discount_price': Decimal('389.99'),
+                'stock_status': 'in_stock',
+                'is_featured': True
+            }
+        )
+        img20, _ = ProductImage.objects.get_or_create(product=p20, image='products/smartwatch_apple.png', defaults={'is_primary': True, 'alt_text': p20.title})
+        img20.image = 'products/smartwatch_apple.png'
+        img20.save()
+
+        ProductSpecification.objects.get_or_create(product=p20, key=sw_disp_key, defaults={'value': '45mm Always-On Retina Display (2000 nits)'})
+        ProductSpecification.objects.get_or_create(product=p20, key=sw_chip_key, defaults={'value': 'Apple S9 SiP'})
+        ProductSpecification.objects.get_or_create(product=p20, key=sw_bat_key, defaults={'value': '18 Hours Normal Use'})
+        ProductSpecification.objects.get_or_create(product=p20, key=sw_water_key, defaults={'value': '50m Water Resistant'})
 
         # 5. Variants Setup
         var_attr, _ = VariantAttribute.objects.get_or_create(name='Packaging')

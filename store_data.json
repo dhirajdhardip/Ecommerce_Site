@@ -180,6 +180,36 @@
   }
 },
 {
+  "model": "store.category",
+  "pk": 13,
+  "fields": {
+    "name": "Smartwatches",
+    "slug": "smartwatches",
+    "parent": null,
+    "description": null,
+    "icon_name": "clock",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.category",
+  "pk": 14,
+  "fields": {
+    "name": "Earbuds & Audio",
+    "slug": "earbuds",
+    "parent": null,
+    "description": null,
+    "icon_name": "headphones",
+    "image": "",
+    "component_type": "none",
+    "is_active": true,
+    "display_order": 0
+  }
+},
+{
   "model": "store.brand",
   "pk": 1,
   "fields": {
@@ -686,6 +716,72 @@
   }
 },
 {
+  "model": "store.product",
+  "pk": 18,
+  "fields": {
+    "title": "Apple Watch Ultra 2 GPS + Cellular (Titanium)",
+    "slug": "apple-watch-ultra-2-gps-cellular",
+    "brand": 8,
+    "category": 13,
+    "model_number": "MREG3LL/A",
+    "description": "Rugged and capable titanium smartwatch with S9 SiP, double tap gesture, brightest Apple display (3000 nits), and up to 36 hours battery life.",
+    "base_price": "799.99",
+    "discount_price": "749.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T19:15:33.431Z",
+    "updated_at": "2026-08-19T19:15:33.431Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 19,
+  "fields": {
+    "title": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)",
+    "slug": "apple-airpods-pro-2nd-gen-usbc",
+    "brand": 8,
+    "category": 14,
+    "model_number": "MTJV3AM/A",
+    "description": "Pro-level Active Noise Cancellation, Adaptive Audio, Transparency mode, Spatial Audio with dynamic head tracking, and USB-C MagSafe case.",
+    "base_price": "249.99",
+    "discount_price": "199.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T19:15:33.480Z",
+    "updated_at": "2026-08-19T19:15:33.480Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 20,
+  "fields": {
+    "title": "Apple Watch Series 9 GPS 45mm Aluminium Case",
+    "slug": "apple-watch-series-9-gps-45mm",
+    "brand": 8,
+    "category": 13,
+    "model_number": "MR993LL/A",
+    "description": "Apple S9 SiP chip, magical double tap gesture control, brighter 2000 nits display, precision finding for iPhone, and advanced health tracking.",
+    "base_price": "429.99",
+    "discount_price": "389.99",
+    "wattage": 0,
+    "warranty": "1 Year Brand Warranty",
+    "stock_status": "in_stock",
+    "is_active": true,
+    "is_featured": true,
+    "is_deal_of_day": false,
+    "created_at": "2026-08-19T19:15:33.512Z",
+    "updated_at": "2026-08-19T19:15:33.512Z"
+  }
+},
+{
   "model": "store.specificationkey",
   "pk": 1,
   "fields": {
@@ -826,6 +922,78 @@
   "fields": {
     "name": "Weight",
     "category": 12,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 17,
+  "fields": {
+    "name": "Display & Size",
+    "category": 13,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 18,
+  "fields": {
+    "name": "Processor / Chip",
+    "category": 13,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 19,
+  "fields": {
+    "name": "Battery Life",
+    "category": 13,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 20,
+  "fields": {
+    "name": "Water Resistance",
+    "category": 13,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 21,
+  "fields": {
+    "name": "Audio Chip",
+    "category": 14,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 22,
+  "fields": {
+    "name": "Noise Cancellation",
+    "category": 14,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 23,
+  "fields": {
+    "name": "Play Time",
+    "category": 14,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.specificationkey",
+  "pk": 24,
+  "fields": {
+    "name": "Connectivity",
+    "category": 14,
     "display_order": 0
   }
 },
@@ -998,6 +1166,114 @@
     "product": 17,
     "key": 16,
     "value": "60g Ultra Light"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 20,
+  "fields": {
+    "product": 18,
+    "key": 17,
+    "value": "49mm Always-On Retina OLED (3000 nits)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 21,
+  "fields": {
+    "product": 18,
+    "key": 18,
+    "value": "Apple S9 SiP (64-bit dual core)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 22,
+  "fields": {
+    "product": 18,
+    "key": 19,
+    "value": "Up to 36 Hours (72 Hours Low Power)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 23,
+  "fields": {
+    "product": 18,
+    "key": 20,
+    "value": "100m Water Resistant (WR100)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 24,
+  "fields": {
+    "product": 19,
+    "key": 21,
+    "value": "Apple H2 Headphone Chip"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 25,
+  "fields": {
+    "product": 19,
+    "key": 22,
+    "value": "2x Active Noise Cancellation & Adaptive Audio"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 26,
+  "fields": {
+    "product": 19,
+    "key": 23,
+    "value": "Up to 6 Hours (30 Hours with Case)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 27,
+  "fields": {
+    "product": 19,
+    "key": 24,
+    "value": "Bluetooth 5.3 & MagSafe USB-C Case"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 28,
+  "fields": {
+    "product": 20,
+    "key": 17,
+    "value": "45mm Always-On Retina Display (2000 nits)"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 29,
+  "fields": {
+    "product": 20,
+    "key": 18,
+    "value": "Apple S9 SiP"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 30,
+  "fields": {
+    "product": 20,
+    "key": 19,
+    "value": "18 Hours Normal Use"
+  }
+},
+{
+  "model": "store.productspecification",
+  "pk": 31,
+  "fields": {
+    "product": 20,
+    "key": 20,
+    "value": "50m Water Resistant"
   }
 },
 {
@@ -1406,31 +1682,36 @@
   }
 },
 {
-  "model": "cart.coupon",
-  "pk": 1,
+  "model": "store.productimage",
+  "pk": 31,
   "fields": {
-    "code": "WELCOME10",
-    "discount_type": "percentage",
-    "discount_value": "10.00",
-    "min_order_amount": "100.00",
-    "active": true,
-    "expires_at": null,
-    "usage_limit": 100,
-    "used_count": 0
+    "product": 18,
+    "image": "products/smartwatch_apple.png",
+    "alt_text": "Apple Watch Ultra 2 GPS + Cellular (Titanium)",
+    "is_primary": true,
+    "display_order": 0
   }
 },
 {
-  "model": "cart.coupon",
-  "pk": 2,
+  "model": "store.productimage",
+  "pk": 32,
   "fields": {
-    "code": "TECH50",
-    "discount_type": "fixed",
-    "discount_value": "50.00",
-    "min_order_amount": "300.00",
-    "active": true,
-    "expires_at": null,
-    "usage_limit": 100,
-    "used_count": 0
+    "product": 19,
+    "image": "products/earbuds_airpods.png",
+    "alt_text": "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)",
+    "is_primary": true,
+    "display_order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 33,
+  "fields": {
+    "product": 20,
+    "image": "products/smartwatch_apple.png",
+    "alt_text": "Apple Watch Series 9 GPS 45mm Aluminium Case",
+    "is_primary": true,
+    "display_order": 0
   }
 }
 ]
