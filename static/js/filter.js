@@ -172,7 +172,7 @@ function renderProductGrid(products) {
                     ${discountBadge}
 
                     <!-- Pure White Background Image Showcase Box -->
-                    <a href="/product/${p.slug}/" class="product-img-box block relative w-full h-52 bg-slate-50 rounded-2xl p-4 flex items-center justify-center border border-slate-100 shadow-sm mb-4">
+                    <a href="/product/${p.slug}/" class="product-img-box block relative w-full h-52 bg-white rounded-2xl p-4 flex items-center justify-center border border-slate-200 shadow-md mb-4">
                         <img src="${p.primary_image}" alt="${p.title}" class="max-h-full object-contain">
                     </a>
 
