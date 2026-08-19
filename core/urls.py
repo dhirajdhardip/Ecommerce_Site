@@ -9,6 +9,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("sitemap.xml", store_views.sitemap_view, name="sitemap"),
     path("robots.txt", store_views.robots_txt_view, name="robots"),
+    path("google38e5e61f44ca7ec2.html", store_views.google_verification_view, name="google_verification"),
 
     path("", include("store.urls")),
     path("user/", include("users.urls")),

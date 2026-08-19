@@ -475,3 +475,8 @@ Sitemap: {host}/sitemap.xml
 """
     return HttpResponse(content, content_type='text/plain')
 
+
+def google_verification_view(request):
+    """Serves Google Search Console verification file google38e5e61f44ca7ec2.html."""
+    return HttpResponse("google-site-verification: google38e5e61f44ca7ec2.html", content_type="text/html")
+
