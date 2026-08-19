@@ -1,7 +1,7 @@
 import json
 from decimal import Decimal
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views import View
 from django.db.models import Q, Min, Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -433,3 +433,45 @@ class ProductCatalogView(View):
             'spec_keys': spec_keys,
         }
         return render(request, 'store/product_list.html', context)
+
+
+def sitemap_view(request):
+    """Generates dynamic XML Sitemap for Googlebot indexation."""
+    host = request.build_absolute_uri('/')[:-1]
+    
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">')
+    
+    # Home Page
+    xml.append(f'  <url><loc>{host}/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>')
+    xml.append(f'  <url><loc>{host}/catalog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>')
+    xml.append(f'  <url><loc>{host}/pc-builder/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>')
+
+    # Categories
+    for cat in Category.objects.filter(is_active=True):
+        xml.append(f'  <url><loc>{host}/catalog/?categories={cat.slug}</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>')
+
+    # Products
+    for p in Product.objects.filter(is_active=True).prefetch_related('images'):
+        img = p.images.first()
+        img_xml = f'<image:image><image:loc>{host}{img.image.url}</image:loc><image:title>{p.title}</image:title></image:image>' if img else ''
+        xml.append(f'  <url><loc>{host}/product/{p.slug}/</loc><changefreq>daily</changefreq><priority>0.95</priority>{img_xml}</url>')
+        
+    xml.append('</urlset>')
+    
+    return HttpResponse('\n'.join(xml), content_type='application/xml')
+
+
+def robots_txt_view(request):
+    """Generates robots.txt for search engine crawlers."""
+    host = request.build_absolute_uri('/')[:-1]
+    content = f"""User-agent: *
+Allow: /
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /user/
+
+Sitemap: {host}/sitemap.xml
+"""
+    return HttpResponse(content, content_type='text/plain')
+

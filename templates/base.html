@@ -4,7 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}TechOrbit | Leading Tech Retail & PC Components Store{% endblock %}</title>
+    <!-- Google Search Engine Optimization (SEO) Meta Tags -->
+    <meta name="description" content="{% block meta_description %}TechOrbit - Bangladesh's leading computer and technology hardware retailer. Shop genuine Processors, GPUs, Samsung Galaxy S26 Ultra, Gaming Monitors, Laptops & PC Components.{% endblock %}">
+    <meta name="keywords" content="TechOrbit, Tech Orbit Bangladesh, Star Tech, Samsung Galaxy S26 Ultra, PC Builder, Gaming Laptops, Processors, Graphics Cards, Hardware Store Sylhet">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecommerce-site-rk3c.onrender.com{{ request.path }}">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:site_name" content="TechOrbit">
+    <meta property="og:title" content="{% block og_title %}TechOrbit | Leading Tech Retail & PC Components Store{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Discover genuine computer hardware, Samsung Galaxy S26 Ultra, OLED Gaming Monitors, and custom PC building at TechOrbit.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecommerce-site-rk3c.onrender.com{{ request.path }}">
+
+    <!-- Google Search Structured Data (Schema.org WebSite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TechOrbit",
+      "alternateName": ["TechOrbit Bangladesh", "Tech Orbit Hardware"],
+      "url": "https://ecommerce-site-rk3c.onrender.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ecommerce-site-rk3c.onrender.com/catalog/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <!-- Django CSRF Token Meta Header -->
     <meta name="csrf-token" content="{{ csrf_token }}">
 

@@ -3,8 +3,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from store import views as store_views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("sitemap.xml", store_views.sitemap_view, name="sitemap"),
+    path("robots.txt", store_views.robots_txt_view, name="robots"),
 
     path("", include("store.urls")),
     path("user/", include("users.urls")),
