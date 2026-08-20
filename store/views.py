@@ -10,6 +10,7 @@ from .models import (
     ProductSpecification, ProductVariant, VariantAttributeValue,
     Banner, Review, Question
 )
+from .ai_recommendations import get_ai_product_recommendations
 
 
 class LiveSearchApiView(View):
@@ -480,3 +481,24 @@ def google_verification_view(request):
     """Serves Google Search Console verification file google38e5e61f44ca7ec2.html."""
     return HttpResponse("google-site-verification: google38e5e61f44ca7ec2.html", content_type="text/html")
 
+
+class AiRecommendationApiView(View):
+    """
+    AI Product Recommendation API.
+    GET  /api/ai-recommendations/?q=<query>            — intent-based search
+    GET  /api/ai-recommendations/?product_id=<id>     — complementary picks
+    """
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get('q', '').strip()
+        product_id = request.GET.get('product_id', None)
+        limit = int(request.GET.get('limit', 6))
+
+        try:
+            results = get_ai_product_recommendations(
+                query=query or None,
+                target_product_id=int(product_id) if product_id else None,
+                limit=limit,
+            )
+            return JsonResponse({'status': 'success', 'results': results, 'query': query})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)

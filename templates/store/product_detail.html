@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ product.title }} | TechOrbit Bangladesh{% endblock %}
 
@@ -69,8 +70,7 @@
 
                 <!-- Key Overview Badges -->
                 <div class="flex flex-wrap gap-4 text-xs text-slate-600 mb-6 pb-6 border-b border-slate-200">
-                    <span>Model: <strong class="text-slate-900">{{ product.model_number|default:"Standard"
-                            }}</strong></span>
+                    <span>Model: <strong class="text-slate-900">{{ product.model_number|default:"Standard" }}</strong></span>
                     <span>•</span>
                     <span>Warranty: <strong class="text-slate-900">{{ product.warranty }}</strong></span>
                     {% if product.wattage %}
@@ -84,8 +84,7 @@
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Regular
                         Price</span>
                     <div class="flex items-baseline space-x-3">
-                        <span id="display-price" class="text-3xl font-black text-[#ef4a23]">${{ product.effective_price
-                            }}</span>
+                        <span id="display-price" class="text-3xl font-black text-[#ef4a23]">${{ product.effective_price }}</span>
                         {% if product.discount_price %}
                         <span class="text-base text-slate-400 line-through">${{ product.base_price }}</span>
                         {% endif %}
@@ -105,9 +104,7 @@
                                 <input type="radio" name="variant_choice" value="{{ variant.id }}" {% if variant.is_default or forloop.first %}checked{% endif %}
                                     onclick="updateVariantPrice('{{ variant.effective_price }}')"
                                     class="w-4 h-4 text-[#ef4a23] bg-white border-slate-300 focus:ring-[#ef4a23]">
-                                <span
-                                    class="ml-3 text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors">{{
-                                    variant.title }}</span>
+                                <span class="ml-3 text-xs font-bold text-slate-800 group-hover:text-[#ef4a23] transition-colors">{{ variant.title }}</span>
                             </span>
                             <span class="text-xs font-black text-slate-900">${{ variant.effective_price }}</span>
                         </label>
@@ -186,6 +183,24 @@
         </div>
     </section>
 
+    <!-- ── AI Complementary Recommendations ──────────────────────────── -->
+    <section class="mb-16" id="ai-complementary-section">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="flex items-center gap-2 bg-purple-600/10 border border-purple-500/30 text-purple-600 text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                </svg>
+                AI Recommended For You
+            </div>
+            <p class="text-xs text-slate-400">Based on this product's specs &amp; ecosystem</p>
+        </div>
+        <div id="ai-complementary-container"
+             data-product-id="{{ product.id }}"
+             class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <!-- Populated by ai_recommendations.js -->
+        </div>
+    </section>
+
 </div>
 
 <!-- Google Product Rich Snippet Structured Data (Schema.org) -->
@@ -221,6 +236,7 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="{% static 'js/ai_recommendations.js' %}"></script>
 <script>
     function changeQty(delta) {
         const input = document.getElementById('buy-qty');

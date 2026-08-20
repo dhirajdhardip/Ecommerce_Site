@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}TechOrbit | Bangladesh's Leading Tech Retail & PC Component Store{% endblock %}
 
@@ -254,4 +255,66 @@
     </div>
 </section>
 
+<!-- ── AI Tech Advisor Section ──────────────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="ai-advisor-section">
+    <!-- Header -->
+    <div class="relative bg-gradient-to-br from-[#0a0a1a] via-[#0e1230] to-[#1a0a2e] border border-purple-900/40 rounded-3xl p-8 sm:p-10 overflow-hidden shadow-2xl mb-6">
+        <!-- Animated glow blobs -->
+        <div class="absolute top-0 left-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-[#ef4a23]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10">
+            <!-- Label -->
+            <div class="flex items-center gap-3 mb-4">
+                <span class="flex items-center gap-2 bg-purple-600/20 border border-purple-500/30 text-purple-300 text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                    </svg>
+                    AI Tech Advisor
+                </span>
+                <span class="text-[10px] text-slate-500 font-mono">Powered by TechOrbit Intelligence</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">
+                What are you looking for today?
+            </h2>
+            <p class="text-slate-400 text-sm mb-6">
+                Describe your need — budget, use case, brand preference — and AI will match you with the perfect tech.
+            </p>
+
+            <!-- Search Input -->
+            <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 backdrop-blur-sm mb-4 focus-within:border-purple-500/60 transition-all">
+                <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 105 11a6 6 0 0012 0z"/>
+                </svg>
+                <input type="text" id="ai-advisor-input" placeholder='e.g. "best gaming laptop under $1500" or "noise-canceling earbuds"'
+                       class="flex-1 bg-transparent text-white text-sm placeholder-slate-500 focus:outline-none" />
+                <button onclick="fetchAiRecommendations(document.getElementById('ai-advisor-input').value.trim())"
+                        class="bg-[#ef4a23] hover:bg-[#d93b15] text-white font-black text-xs px-4 py-2 rounded-xl transition-all active:scale-95 flex-shrink-0">
+                    Ask AI →
+                </button>
+            </div>
+
+            <!-- Quick Prompt Chips -->
+            <div id="ai-prompt-chips" class="flex flex-wrap gap-2">
+                <!-- Populated by ai_recommendations.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Results summary -->
+    <p id="ai-results-summary"
+       class="hidden text-xs text-slate-500 font-semibold mb-4 px-1"></p>
+
+    <!-- Results Grid -->
+    <div id="ai-results-container"
+         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Populated by ai_recommendations.js -->
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/ai_recommendations.js' %}"></script>
 {% endblock %}

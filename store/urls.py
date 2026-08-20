@@ -12,4 +12,5 @@ urlpatterns = [
     path('api/products/filter/', views.ProductFilterView.as_view(), name='product_filter'),
     path('api/search/live/', views.LiveSearchApiView.as_view(), name='live_search'),
     path('api/cart/add/', views.AddToCartView.as_view(), name='cart_add'),
+    path('api/ai-recommendations/', views.AiRecommendationApiView.as_view(), name='ai_recommendations'),
 ]
