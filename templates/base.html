@@ -104,6 +104,17 @@
             transform: scale(1.08);
             filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.2));
         }
+
+        /* AI Chat Panel custom scrollbar */
+        #ai-chat-messages::-webkit-scrollbar { width: 3px; }
+        #ai-chat-messages::-webkit-scrollbar-track { background: transparent; }
+        #ai-chat-messages::-webkit-scrollbar-thumb { background: #ef4a23; border-radius: 4px; }
+
+        /* AI panel slide-in animation */
+        @keyframes aiSlideUp {
+            from { opacity: 0; transform: scale(0.85) translateY(12px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
     </style>
     {% block extra_head %}{% endblock %}
 </head>
@@ -376,6 +387,8 @@
     <script src="/static/js/cart.js"></script>
     <script src="/static/js/search.js"></script>
     <script src="/static/js/wishlist.js"></script>
+    <!-- AI Shopping Assistant (floating widget on all pages) -->
+    <script src="/static/js/ai_assistant.js"></script>
     {% block extra_js %}{% endblock %}
 </body>
 
