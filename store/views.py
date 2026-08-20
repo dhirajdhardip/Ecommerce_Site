@@ -67,12 +67,20 @@ class HomePageView(View):
             is_active=True, discount_price__isnull=False
         ).select_related('brand', 'category').prefetch_related('images')[:4]
 
+        # Fetch top smartphones for the new section
+        top_smartphones = Product.objects.filter(
+            is_active=True,
+            category__slug='smartphones',
+            brand__slug__in=['samsung', 'apple', 'vivo', 'xiaomi']
+        ).select_related('brand', 'category').prefetch_related('images', 'specifications__key').order_by('-is_featured', '-created_at')[:8]
+
         context = {
             'categories': categories,
             'brands': brands,
             'banners': banners,
             'featured_products': featured_products,
             'deal_products': deal_products,
+            'top_smartphones': top_smartphones,
         }
         return render(request, 'store/home.html', context)
 
@@ -428,10 +436,17 @@ class ProductCatalogView(View):
         brands = Brand.objects.filter(is_active=True)
         spec_keys = SpecificationKey.objects.all().prefetch_related('product_specs')
 
+        top_smartphones = Product.objects.filter(
+            is_active=True,
+            category__slug='smartphones',
+            brand__slug__in=['samsung', 'apple', 'vivo', 'xiaomi']
+        ).select_related('brand', 'category').prefetch_related('images', 'specifications__key').order_by('-is_featured', '-created_at')[:4]
+
         context = {
             'categories': categories,
             'brands': brands,
             'spec_keys': spec_keys,
+            'top_smartphones': top_smartphones,
         }
         return render(request, 'store/product_list.html', context)
 
