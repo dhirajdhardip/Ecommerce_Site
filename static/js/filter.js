@@ -103,7 +103,8 @@ async function applyFilters(page = 1) {
         const response = await fetch(`/api/products/filter/?${params.toString()}`, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
-            }
+            },
+            cache: 'no-store'
         });
 
         const data = await response.json();
